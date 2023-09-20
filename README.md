@@ -6,10 +6,13 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Get Started
+`npm install`
+`npm run dev`
 
 # FenixAI Project Requirements
 
-# Front-End
+## Front-End
 - Web interface that allows input of of an application # and display of results
 - Project code in Github
 - Project hosted/available at web address (of your choosing)
