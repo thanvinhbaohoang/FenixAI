@@ -10,41 +10,26 @@ Currently, two official plugins are available:
 # FenixAI Project Requirements
 
 # Front-End
-Web interface that allows input of of an application # and display of results
-
-Project code in Github
-
-Project hosted/available at web address (of your choosing)
+- Web interface that allows input of of an application # and display of results
+- Project code in Github
+- Project hosted/available at web address (of your choosing)
 
 
 ## USPTO API
-Retrieval of Office Action Type
-
-Retrieval of rejection types (e.g., 101/102/103/112)
-
-Retrieval of Examiner Name
-
-Retrieval of Art Unit
-
-List of pending claims
-
-List of allowed claims
-
-List of objected claims
-
-List of claims of each rejection type
+- Retrieval of Office Action Type
+- Retrieval of rejection types (e.g., 101/102/103/112)
+- Retrieval of Examiner Name
+- Retrieval of Art Unit
+- List of pending claims
+- List of allowed claims
+- List of objected claims
+- List of claims of each rejection type
 
 ## Not Found in in USPTO API documentation (Most likely in PatentsView)
-List/select Office Actions for the application
-
-Retrieval of Office Action mailing Date
-
-Retrieval of Filing Date of the Application
-
-Retrieval of Applicant name
-
-Retrieval of Priority Date of the Application
-
-Retrieval of the Office Action document(s)
-
-Retrieval of the Patent application document(s)
+- List/select Office Actions for the application
+- Retrieval of Office Action mailing Date
+- Retrieval of Filing Date of the Application
+- Retrieval of Applicant name
+- Retrieval of Priority Date of the Application
+- Retrieval of the Office Action document(s)
+- Retrieval of the Patent application document(s)
