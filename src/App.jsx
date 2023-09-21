@@ -2,7 +2,6 @@ import fenixLogo from './assets/fenixAI.png'
 import { SearchBar } from './components/Searchbar'
 import { SearchResultsList } from './components/SearchResultsList'
 import { useState } from 'react'
-import { filterButtons } from './components/FilterButtons'
 
 import './App.css'
 
