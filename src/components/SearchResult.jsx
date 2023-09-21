@@ -112,12 +112,13 @@ export default function SearchResult({result, setShowSuggestions, setActiveDoc})
   return (
     <div onClick={handleClick}
     className={`hover:bg-slate-500 h-1/2 
+    ${loading? "cursor-wait":"cursor-pointer"}
     cursor-pointer rounded-md px-2 w-full 
     flex flex-col items-start`}>
                 
             <div className='flex flex-col items-start'>
               <h1 className='font-bold'>Office Action </h1>
-              {loading? "LOADING" : <p>Application #: {result.patentApplicationNumber}   </p>
+              {loading? "LOADING..." : <p>Application #: {result.patentApplicationNumber}   </p>
  }
               <div></div>
               {/* OA Create Date: {result.createDateTime}   <br/>
