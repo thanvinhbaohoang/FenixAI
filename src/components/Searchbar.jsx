@@ -18,11 +18,8 @@ export const SearchBar = ( ) => {
         };
 
         const data = new URLSearchParams();
-        // Use this if want to query directly from server instead
-            // data.append('criteria', `id:${value}`); 
-
         // Use the below to pull all data then filter on front-end
-        data.append('criteria', '*:*');
+        data.append('criteria', `patentApplicationNumber:${value}*`);
         data.append('start', '0');
         data.append('rows', '100');
 
@@ -30,11 +27,12 @@ export const SearchBar = ( ) => {
         axios.post(url, data, { headers })
             .then((response) => {
                 const docs = response.data.response.docs
-                const filteredDocs = docs.filter( (doc) => {
-                    return doc && doc.patentApplicationNumber&& doc.patentApplicationNumber.toLowerCase().includes(value)
-                })
-                console.log(filteredDocs)
-                setResults(filteredDocs);
+                // const filteredDocs = docs.filter( (doc) => {
+                //     return doc && doc.patentApplicationNumber&& doc.patentApplicationNumber.toLowerCase().includes(value)
+                // })
+                // console.log(filteredDocs)
+                // Filter Out Fetched Results
+                setResults(docs);
 
                  // Show or hide suggestions based on input length
                 setShowSuggestions(value.length > 0);
