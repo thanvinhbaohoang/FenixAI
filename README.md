@@ -22,18 +22,21 @@ Currently, two official plugins are available:
 ## USPTO API
 - Retrieval of Office Action Type
 - Retrieval of rejection types (e.g., 101/102/103/112)
-- Retrieval of Examiner Name
 - Retrieval of Art Unit
+- Retrieval of Office Action mailing Date
+
 - List of pending claims
 - List of allowed claims
 - List of objected claims
 - List of claims of each rejection type
 
+## PatentsView
+- Retrieval of Filing Date of the Application 
+- Retrieval of Examiner Name  
+- Retrieval of Applicant name 
+
 ## Not Found in in USPTO API documentation (Most likely in PatentsView)
 - List/select Office Actions for the application
-- Retrieval of Office Action mailing Date
-- Retrieval of Filing Date of the Application
-- Retrieval of Applicant name
 - Retrieval of Priority Date of the Application
 - Retrieval of the Office Action document(s)
 - Retrieval of the Patent application document(s)
