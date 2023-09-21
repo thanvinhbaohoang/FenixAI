@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { SearchResultsList } from "./SearchResultsList";
 import axios from "axios";
-
+import { FilterButtons } from "./FilterButtons";
 
 export const SearchBar = ( ) => {
     const [input, setInput] = useState("")
@@ -51,10 +51,10 @@ export const SearchBar = ( ) => {
         <div className="flex border-2 mt-4  p-4 flex-col items-start rounded-lg">
             <div className="font-bold"> Office Action</div>
             <div>Application #: {doc.patentApplicationNumber} </div>
-            <div>Create Date: {doc.createDateTime}   </div>
+            {/* <div>Create Date: {doc.createDateTime}   </div> */}
 
             <div>Art Unit: {doc.groupArtUnitNumber}   </div>
-            <div>Legal Section Code?: {doc.legalSectionCode}   </div>
+            {/* <div>Legal Section Code?: {doc.legalSectionCode}   </div>
             <div>Action Type: {doc.actionTypeCategory}   </div>
             <div>Pending Claims: {doc.claimNumberArrayDocument}   </div>
             <div> Rejection Types </div>
@@ -62,9 +62,9 @@ export const SearchBar = ( ) => {
             <div>101: {doc.hasRej101}   </div>
             <div>102: {doc.hasRej102}   </div>
             <div>103: {doc.hasRej103}   </div>
-            <div>112: {doc.hasRej112}   </div>
+            <div>112: {doc.hasRej112}   </div> */}
 
-
+                
             <div className=" mt-10 font-bold">Patent Information</div>
         </div>
         )
@@ -88,10 +88,10 @@ export const SearchBar = ( ) => {
                 placeholder="Search Application #..." required/>
             </div>
 
-            <button className="border-2 p-2 h-full rounded-lg"> Rejection </button>
+       
 
 
-            
+            <FilterButtons/>
         </form>
         
                     {/* Only Show Suggestions if Input is not empty */}

@@ -10,8 +10,8 @@ export const SearchResultsList = ({ results, setShowSuggestions, setActiveDoc })
             <div key={id} 
             className=" border-2  mb-6 bg-slate-700 hover:bg-slate-500 cursor-pointer rounded-md p-2
             w-full flex flex-col items-start">
+                
                 <SearchResult result={result} setShowSuggestions={setShowSuggestions} setActiveDoc={setActiveDoc}/>
-
             </div>
         )
         })}
