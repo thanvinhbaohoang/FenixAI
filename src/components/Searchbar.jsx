@@ -21,7 +21,7 @@ export const SearchBar = ( ) => {
         // Use the below to pull all data then filter on front-end
         data.append('criteria', `patentApplicationNumber:${value}*`);
         data.append('start', '0');
-        data.append('rows', '100');
+        data.append('rows', '3');
 
         // Post Request
         axios.post(url, data, { headers })
@@ -54,16 +54,16 @@ export const SearchBar = ( ) => {
             {/* <div>Create Date: {doc.createDateTime}   </div> */}
 
             <div>Art Unit: {doc.groupArtUnitNumber}   </div>
-            {/* <div>Legal Section Code?: {doc.legalSectionCode}   </div>
+            <div>Legal Section Code?: {doc.legalSectionCode}   </div>
             <div>Action Type: {doc.actionTypeCategory}   </div>
             <div>Pending Claims: {doc.claimNumberArrayDocument}   </div>
-            <div> Rejection Types </div>
-            <div>DP: {doc.hasRejDP}   </div>
-            <div>101: {doc.hasRej101}   </div>
-            <div>102: {doc.hasRej102}   </div>
-            <div>103: {doc.hasRej103}   </div>
-            <div>112: {doc.hasRej112}   </div> */}
-
+            Rejection Types:   
+                              {doc.hasRejDP?  " DP" :""}   
+                              {doc.hasRej101? " 101 " :""}  
+                              {doc.hasRej102? " 102 " :""} 
+                              {doc.hasRej103? " 103 " :""} 
+                              {doc.hasRej112? " 112 " :""} 
+          
                 
             <div className=" mt-10 font-bold">Patent Information</div>
         </div>

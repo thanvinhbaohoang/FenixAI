@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
+
+
+
 export default function SearchResult({result, setShowSuggestions, setActiveDoc}) {
   const [patentData, setPatentData] = useState({})
   
@@ -15,7 +18,18 @@ export default function SearchResult({result, setShowSuggestions, setActiveDoc})
       const finalResult = {
         patentApplicationNumber: result.patentApplicationNumber,
         groupArtUnitNumber: result.groupArtUnitNumber,
+        legalSectionCode : result.legalSectionCode,
+        actionTypeCategory: result.actionTypeCategory,
+        claimNumberArrayDocument: result.claimNumberArrayDocument,
+        hasRejDP: result.hasRejDP,
+        hasRej101: result.hasRej101,
+        hasRej102:result.hasRej102,
+        hasRej103: result.hasRej103,
+        hasRej112: result.hasRej112,
+
         patentData: fetchedPatentData, // Use fetchedPatentData here
+        
+   
       };
   
       setShowSuggestions(false);
