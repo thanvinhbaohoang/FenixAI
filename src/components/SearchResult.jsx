@@ -47,14 +47,12 @@ export default function SearchResult({result, setShowSuggestions, setActiveDoc})
 
   } 
   const handleClick =  () => {
-       
-      console.log("handleClick PatentRes",patentData)
-      // await fetchPatentData(result.patentApplicationNumber)
-      console.log("======  handleClick PatentData",patentData)
+       console.log("RESULT HANDLECLICK", result)
       const finalResult = {
         patentApplicationNumber: result.patentApplicationNumber,
         groupArtUnitNumber: result.groupArtUnitNumber,
         legalSectionCode : result.legalSectionCode,
+        createDateTime: result.createDateTime,
         actionTypeCategory: result.actionTypeCategory,
         claimNumberArrayDocument: result.claimNumberArrayDocument,
         hasRejDP: result.hasRejDP,
@@ -70,7 +68,7 @@ export default function SearchResult({result, setShowSuggestions, setActiveDoc})
         applicant_organization: patentData?.applicants,
         examiners: patentData?.examiners[0].examiner_last_name
       };
-  
+      console.log("FINALRES",finalResult)
       setShowSuggestions(false);
       setActiveDoc(finalResult);
    

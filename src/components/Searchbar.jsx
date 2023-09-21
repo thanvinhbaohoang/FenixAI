@@ -52,7 +52,7 @@ export const SearchBar = ( ) => {
             <div className="flex flex-col items-start">
             <div className="font-bold"> Office Action</div>
             <div>Application #: {doc.patentApplicationNumber} </div>
-            <div>Create Date: {doc.createDateTime}   </div>
+            <div>Create Time: {doc.createDateTime}   </div>
             <div>Art Unit: {doc.groupArtUnitNumber}   </div>
             <div>Legal Section Code?: {doc.legalSectionCode}   </div>
             <div>Action Type: {doc.actionTypeCategory}   </div>
