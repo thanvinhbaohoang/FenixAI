@@ -2,6 +2,7 @@ import fenixLogo from './assets/fenixAI.png'
 import { SearchBar } from './components/Searchbar'
 import { SearchResultsList } from './components/SearchResultsList'
 import { useState } from 'react'
+import { filterButtons } from './components/filterButtons'
 
 import './App.css'
 
@@ -17,7 +18,7 @@ function App() {
 
         <h1 className='text-3xl font-bold text-orange-50'>FenixAI</h1>
             
-       <div className='w-[40vw]'>
+       <div className='w-[70vw]'>
         <SearchBar/>
        </div>
        

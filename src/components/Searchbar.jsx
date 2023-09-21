@@ -27,11 +27,6 @@ export const SearchBar = ( ) => {
         axios.post(url, data, { headers })
             .then((response) => {
                 const docs = response.data.response.docs
-                // const filteredDocs = docs.filter( (doc) => {
-                //     return doc && doc.patentApplicationNumber&& doc.patentApplicationNumber.toLowerCase().includes(value)
-                // })
-                // console.log(filteredDocs)
-                // Filter Out Fetched Results
                 setResults(docs);
 
                  // Show or hide suggestions based on input length
@@ -42,14 +37,19 @@ export const SearchBar = ( ) => {
             });
     }
 
+ 
+
     const handleChange = (value) => {
         setInput(value);
         fetchData(value)
+        // fetchPatentData(value)
     }
-
+    
+   
     const displayActiveDoc = (doc) => {
         return(
         <div className="flex border-2 mt-4  p-4 flex-col items-start rounded-lg">
+            <div className="font-bold"> Office Action</div>
             <div>Application #: {doc.patentApplicationNumber} </div>
             <div>Create Date: {doc.createDateTime}   </div>
 
@@ -63,13 +63,16 @@ export const SearchBar = ( ) => {
             <div>102: {doc.hasRej102}   </div>
             <div>103: {doc.hasRej103}   </div>
             <div>112: {doc.hasRej112}   </div>
+
+
+            <div className=" mt-10 font-bold">Patent Information</div>
         </div>
         )
     }
 
     return (
-        <div>
-        <form className="w-full flex flex-col items-center">   
+        <div className="">
+        <form className="w-full flex gap-4 items-center">   
             <label htmlFor="simple-search" className="sr-only">Search</label>
             <div className="relative w-full">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -85,15 +88,17 @@ export const SearchBar = ( ) => {
                 placeholder="Search Application #..." required/>
             </div>
 
-            {/* Only Show Suggestions if Input is not empty */}
-            <div className="inherit w-full">
-                {showSuggestions && <SearchResultsList setShowSuggestions={setShowSuggestions} setActiveDoc={setActiveDoc} results={results} />}
-            </div>
+            <button className="border-2 p-2 h-full rounded-lg"> Rejection </button>
+
 
             
         </form>
-
         
+                    {/* Only Show Suggestions if Input is not empty */}
+                    <div className="inherit w-full">
+                {showSuggestions && <SearchResultsList setShowSuggestions={setShowSuggestions} setActiveDoc={setActiveDoc} results={results} />}
+            </div>
+
         {activeDoc? displayActiveDoc(activeDoc):"NO Doc Chosen"}
             
             
