@@ -65,7 +65,7 @@ export default function SearchResult({result, setShowSuggestions, setActiveDoc})
         patent_id : patentData?.patent_id,
         patent_title: patentData?.patent_title,
         filing_date: patentData?.application[0].filing_date,
-        applicant_organization: patentData?.applicants,
+        applicant_organization: patentData?.applicants[0].applicant_organization,
         examiners: patentData?.examiners[0].examiner_last_name
       };
       console.log("FINALRES",finalResult)

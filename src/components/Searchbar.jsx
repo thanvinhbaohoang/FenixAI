@@ -51,13 +51,13 @@ export const SearchBar = ( ) => {
         <div className="flex border-2 mt-4  p-4 flex-col items-start rounded-lg">
             <div className="flex flex-col items-start">
             <div className="font-bold"> Office Action</div>
-            <div>Application #: {doc.patentApplicationNumber} </div>
-            <div>Create Time: {doc.createDateTime}   </div>
-            <div>Art Unit: {doc.groupArtUnitNumber}   </div>
-            <div>Legal Section Code?: {doc.legalSectionCode}   </div>
-            <div>Action Type: {doc.actionTypeCategory}   </div>
-            <div>Pending Claims: {doc.claimNumberArrayDocument}   </div>
-            <div>Rejection Types:   
+            <div className="text-left">Application #: {doc.patentApplicationNumber} </div>
+            <div className="text-left">Create Time: {doc.createDateTime}   </div>
+            <div className="text-left">Art Unit: {doc.groupArtUnitNumber}   </div>
+            <div className="text-left">Legal Section Code?: {doc.legalSectionCode}   </div>
+            <div className="text-left">Action Type: {doc.actionTypeCategory}   </div>
+            <div className="text-left">Pending Claims: {doc.claimNumberArrayDocument}   </div>
+            <div className="text-left">Rejection Types:   
                               {doc.hasRejDP?  " DP" :""}   
                               {doc.hasRej101? " 101 " :""}  
                               {doc.hasRej102? " 102 " :""} 
@@ -69,10 +69,11 @@ export const SearchBar = ( ) => {
             <div className="flex flex-col items-start">
                 <div className=" mt-10 font-bold">Patent Information</div>            
                 <div className="flex flex-col items-start">
-                    <div>PatentID: {doc.patent_id}</div>
-                    <div>Title: {doc.patent_title}</div>
-                    <div>filing_date: {doc.filing_date}</div>
-                    <div>Examiners: {doc.examiners}</div> 
+                    <div className="text-left">PatentID: {doc.patent_id}</div>
+                    <div className="text-left">Applicant Organization: {doc.applicant_organization}</div>
+                    <div className="text-left">Title: {doc.patent_title}</div>
+                    <div className="text-left">filing_date: {doc.filing_date}</div>
+                    <div className="text-left">Examiners: {doc.examiners}</div> 
                 </div>
             </div>
 
