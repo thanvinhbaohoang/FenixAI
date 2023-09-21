@@ -49,6 +49,7 @@ export const SearchBar = ( ) => {
     const displayActiveDoc = (doc) => {
         return(
         <div className="flex border-2 mt-4  p-4 flex-col items-start rounded-lg">
+            <div className="flex flex-col items-start">
             <div className="font-bold"> Office Action</div>
             <div>Application #: {doc.patentApplicationNumber} </div>
             <div>Create Date: {doc.createDateTime}   </div>
@@ -56,24 +57,23 @@ export const SearchBar = ( ) => {
             <div>Legal Section Code?: {doc.legalSectionCode}   </div>
             <div>Action Type: {doc.actionTypeCategory}   </div>
             <div>Pending Claims: {doc.claimNumberArrayDocument}   </div>
-            Rejection Types:   
+            <div>Rejection Types:   
                               {doc.hasRejDP?  " DP" :""}   
                               {doc.hasRej101? " 101 " :""}  
                               {doc.hasRej102? " 102 " :""} 
                               {doc.hasRej103? " 103 " :""} 
                               {doc.hasRej112? " 112 " :""} 
-          
+            </div>
+            </div>
                 
-            <div className=" mt-10 font-bold">Patent Information</div>
-            {console.log("ACTIVE", doc)}
-            
             <div className="flex flex-col items-start">
-                <div>PatentID: {doc.patent_id}</div>
-                <div>Title: {doc.patent_title}</div>
-                <div>filing_date: {doc.filing_date}</div>
-
-                <div>Examiners: {doc.examiners}</div> 
-                
+                <div className=" mt-10 font-bold">Patent Information</div>            
+                <div className="flex flex-col items-start">
+                    <div>PatentID: {doc.patent_id}</div>
+                    <div>Title: {doc.patent_title}</div>
+                    <div>filing_date: {doc.filing_date}</div>
+                    <div>Examiners: {doc.examiners}</div> 
+                </div>
             </div>
 
         </div>
