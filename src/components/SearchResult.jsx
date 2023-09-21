@@ -6,11 +6,13 @@ import axios from 'axios'
 
 export default function SearchResult({result, setShowSuggestions, setActiveDoc}) {
   const [patentData, setPatentData] = useState({})
+  const [loading, setLoading] = useState(true)
 
  // useEffect with an empty dependency array (runs once, like componentDidMount)
  useEffect( () => {
+  setPatentData({})
   fetchPatentData(result.patentApplicationNumber)
-}, []); // Empty dependency array means it runs once when the component mounts
+}, [result]); //  dependency on result means it runs once when result change
 
   
   const fetchPatentData = async (value) => {
@@ -35,7 +37,7 @@ export default function SearchResult({result, setShowSuggestions, setActiveDoc})
     // Handle the response data here
     const data = response.data.patents
     setPatentData(data[0])
-
+    setLoading(false)
     })
     .catch((error) => {
     // Handle any errors here
@@ -109,16 +111,19 @@ export default function SearchResult({result, setShowSuggestions, setActiveDoc})
 
   return (
     <div onClick={handleClick}
-    className=" hover:bg-slate-500 h-1/2 cursor-pointer rounded-md px-2
-            w-full flex flex-col items-start">
+    className={`hover:bg-slate-500 h-1/2 
+    cursor-pointer rounded-md px-2 w-full 
+    flex flex-col items-start`}>
                 
-            <div className=''>
+            <div className='flex flex-col items-start'>
               <h1 className='font-bold'>Office Action </h1>
-              Application #: {result.patentApplicationNumber}    <br/>
-              OA Create Date: {result.createDateTime}   <br/>
+              {loading? "LOADING" : <p>Application #: {result.patentApplicationNumber}   </p>
+ }
+              <div></div>
+              {/* OA Create Date: {result.createDateTime}   <br/>
               OA Submission Date: {result.submissionDate}   <br/>
               Art Unit: {result.groupArtUnitNumber}   <br/>
-              {/* Legal Section Code: {result.legalSectionCode}   <br/> */}
+              Legal Section Code: {result.legalSectionCode}   <br/>
               ActionTypeCategory: {result.actionTypeCategory}   <br/>
               claimNumberArrayDocument: {result.claimNumberArrayDocument}  <br/>
               Rejection Types:   
@@ -133,7 +138,11 @@ export default function SearchResult({result, setShowSuggestions, setActiveDoc})
             <div className='flex flex-col'>
               <div>{patentData?.patent_title? patentData?.patent_title:"Loading Title..."}</div>
               <div>{patentData?.patent_id? patentData.patent_id:"Loading PatentID..."}</div>
-            </div>
+              <div>{patentData?.examiners? patentData.examiners[0].examiner_last_name:"Loading Examiner..."}</div>
+              <div>{patentData?.examiners? patentData.application.filing_date:"Loading FilingDate..."}</div>
+              <div>{patentData?.applicants? patentData.applicants.applicant_organization:"Loading Applicant..."}</div>
+
+            </div> */}
             </div>
           
 
