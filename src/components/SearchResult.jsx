@@ -118,7 +118,10 @@ export default function SearchResult({result, setShowSuggestions, setActiveDoc})
                 
             <div className='flex flex-col items-start'>
               <h1 className='font-bold'>Office Action </h1>
-              {loading? "LOADING..." : <p>Application #: {result.patentApplicationNumber}   </p>
+              {loading? "LOADING..." : <div className='flex flex-col items-start'>
+                <p>Application #: {result.patentApplicationNumber}  </p>                
+                <p>ActionTypeCategory: {result.actionTypeCategory}</p>
+              </div>
  }
               <div></div>
               {/* OA Create Date: {result.createDateTime}   <br/>
