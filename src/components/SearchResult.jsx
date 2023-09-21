@@ -4,11 +4,51 @@ import axios from 'axios'
 
 
 
-export default function SearchResult({result, patentResults, setShowSuggestions, setActiveDoc}) {
+export default function SearchResult({result, setShowSuggestions, setActiveDoc}) {
+  const [patentData, setPatentData] = useState({})
 
+ // useEffect with an empty dependency array (runs once, like componentDidMount)
+ useEffect( () => {
+  fetchPatentData(result.patentApplicationNumber)
+}, []); // Empty dependency array means it runs once when the component mounts
+
+  
+  const fetchPatentData = async (value) => {
+    console.log("FETCHPATENTDATA CALLED")
+    // Parameters for URL Post Request
+    // https://search.patentsview.org/api/v1/patent/?q={"application.application_id":"15/855802"}&f=["patent_title", "application.application_id", "application.filing_date",   "patent_id", "applicants.applicant_organization", "examiners.examiner_first_name","examiners.examiner_last_name", "pct_data"]
+    const apiUrl = 'https://search.patentsview.org/api/v1/patent/';
+    const formattedApplicationNumber = value.toString().slice(0, 2) + '/' + value.slice(2);
+    const query = {
+    q: `{"application.application_id":"${formattedApplicationNumber}"}`,
+    f: '["patent_title", "application.application_id", "application.filing_date", "patent_id", "applicants.applicant_organization", "examiners.examiner_first_name", "examiners.examiner_last_name", "pct_data"]',
+    };
+    const headers = {
+    'x-api-key': "dkw0Ezmu.ao16DmJ1rIOjXJ2ebYSEi0SM8HuPRe6H",
+    };
+
+    axios.get(apiUrl, {
+    params: query,
+    headers: headers,
+    })
+    .then((response) => {
+    // Handle the response data here
+    const data = response.data.patents
+    setPatentData(data[0])
+
+    })
+    .catch((error) => {
+    // Handle any errors here
+    console.error(error);
+    }
+    );
+
+  } 
   const handleClick =  () => {
        
-      console.log("handleClick PatentRes",patentResults)
+      console.log("handleClick PatentRes",patentData)
+      // await fetchPatentData(result.patentApplicationNumber)
+      console.log("======  handleClick PatentData",patentData)
       const finalResult = {
         patentApplicationNumber: result.patentApplicationNumber,
         groupArtUnitNumber: result.groupArtUnitNumber,
@@ -21,12 +61,12 @@ export default function SearchResult({result, patentResults, setShowSuggestions,
         hasRej103: result.hasRej103,
         hasRej112: result.hasRej112,
 
-        patentResults: patentResults, // Use fetchedPatentData here
-        patent_id : patentResults.patent_id,
-        patent_title: patentResults.patent_title,
-        filing_date: patentResults.application[0].filing_date,
-        applicant_organization: patentResults.applicants,
-        examiners: patentResults.examiners[0].examiner_last_name
+        // patentResults: patentResults, // Use fetchedPatentData here
+        patent_id : patentData?.patent_id,
+        patent_title: patentData?.patent_title,
+        filing_date: patentData?.application[0].filing_date,
+        applicant_organization: patentData?.applicants,
+        examiners: patentData?.examiners[0].examiner_last_name
       };
   
       setShowSuggestions(false);
@@ -90,7 +130,10 @@ export default function SearchResult({result, patentResults, setShowSuggestions,
           
 
             <h1 className='font-bold mt-4'>Patent Data</h1>
-
+            <div className='flex flex-col'>
+              <div>{patentData?.patent_title? patentData?.patent_title:"Loading Title..."}</div>
+              <div>{patentData?.patent_id? patentData.patent_id:"Loading PatentID..."}</div>
+            </div>
             </div>
           
 

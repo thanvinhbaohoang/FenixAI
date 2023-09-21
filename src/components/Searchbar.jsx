@@ -6,7 +6,7 @@ import { FilterButtons } from "./FilterButtons";
 export const SearchBar = ( ) => {
     const [input, setInput] = useState("")
     const [results, setResults]=  useState([]);
-    const [patentResults, setPatentResults]=  useState([]);
+    // const [patentResults, setPatentResults]=  useState([]);
 
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [activeDoc, setActiveDoc] = useState({})
@@ -39,44 +39,44 @@ export const SearchBar = ( ) => {
             });
     }
 
-    const fetchPatentData = (value) => {
-            // Parameters for URL Post Request
-    // https://search.patentsview.org/api/v1/patent/?q={"application.application_id":"15/855802"}&f=["patent_title", "application.application_id", "application.filing_date",   "patent_id", "applicants.applicant_organization", "examiners.examiner_first_name","examiners.examiner_last_name", "pct_data"]
-    const apiUrl = 'https://search.patentsview.org/api/v1/patent/';
-    const formattedApplicationNumber = value.toString().slice(0, 2) + '/' + value.slice(2);
-    const query = {
-    q: `{"application.application_id":"${formattedApplicationNumber}"}`,
-    f: '["patent_title", "application.application_id", "application.filing_date", "patent_id", "applicants.applicant_organization", "examiners.examiner_first_name", "examiners.examiner_last_name", "pct_data"]',
-    };
-    const headers = {
-    'x-api-key': "dkw0Ezmu.ao16DmJ1rIOjXJ2ebYSEi0SM8HuPRe6H",
-    };
+//     const fetchPatentData = (value) => {
+//             // Parameters for URL Post Request
+//     // https://search.patentsview.org/api/v1/patent/?q={"application.application_id":"15/855802"}&f=["patent_title", "application.application_id", "application.filing_date",   "patent_id", "applicants.applicant_organization", "examiners.examiner_first_name","examiners.examiner_last_name", "pct_data"]
+//     const apiUrl = 'https://search.patentsview.org/api/v1/patent/';
+//     const formattedApplicationNumber = value.toString().slice(0, 2) + '/' + value.slice(2);
+//     const query = {
+//     q: `{"application.application_id":"${formattedApplicationNumber}"}`,
+//     f: '["patent_title", "application.application_id", "application.filing_date", "patent_id", "applicants.applicant_organization", "examiners.examiner_first_name", "examiners.examiner_last_name", "pct_data"]',
+//     };
+//     const headers = {
+//     'x-api-key': "dkw0Ezmu.ao16DmJ1rIOjXJ2ebYSEi0SM8HuPRe6H",
+//     };
 
-    axios.get(apiUrl, {
-    params: query,
-    headers: headers,
-    })
-    .then((response) => {
-        // Handle the response data here
-        const data = response.data.patents
-        setPatentResults(data[0])
-        console.log("FETCHED Patent Data:",data)
-      })
-    .catch((error) => {
-        // Handle any errors here
-        console.error("ERROR");
-    }
-    );
+//     axios.get(apiUrl, {
+//     params: query,
+//     headers: headers,
+//     })
+//     .then((response) => {
+//         // Handle the response data here
+//         const data = response.data.patents
+//         setPatentResults(data[0])
+//       })
+//     .catch((error) => {
+//         // Handle any errors here
+//         console.error("ERROR");
+//     }
+//     );
 
-  } 
+//   } 
 
 
  
 
-    const handleChange = (value) => {
+    const handleChange = async (value) => {
         setInput(value);
         fetchData(value);
-        fetchPatentData(value);
+
+        // fetchPatentData(value);
     }
     
    
@@ -141,7 +141,7 @@ export const SearchBar = ( ) => {
         
                     {/* Only Show Suggestions if Input is not empty */}
                     <div className="inherit w-full">
-                {showSuggestions && <SearchResultsList setShowSuggestions={setShowSuggestions} setActiveDoc={setActiveDoc} results={results} patentResults={patentResults}/>}
+                {showSuggestions && <SearchResultsList  setShowSuggestions={setShowSuggestions} setActiveDoc={setActiveDoc} results={results} />}
             </div>
 
         {activeDoc? displayActiveDoc(activeDoc):"NO Doc Chosen"}
